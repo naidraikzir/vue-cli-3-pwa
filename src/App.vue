@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <div class="view">
+      <div
+        class="connection-status"
+        v-show="$root.isOffline"
+      >No Internet Connection</div>
       <router-view></router-view>
     </div>
     <nav-bar></nav-bar>
@@ -65,6 +69,13 @@ pre {
   max-width: 540px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.connection-status {
+  background: #f3f3f3;
+  color: #f00;
+  padding: 0.5em;
+  text-align: center;
 }
 
 .view {

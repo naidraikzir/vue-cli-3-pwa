@@ -5,6 +5,7 @@ import NProgress from 'nprogress';
 Vue.use(Router);
 
 NProgress.configure({
+  parent: '#app',
   showSpinner: false,
 });
 

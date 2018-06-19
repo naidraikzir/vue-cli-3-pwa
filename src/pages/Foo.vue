@@ -1,7 +1,18 @@
 <template>
   <div>
-    <h1>Foo</h1>
-    <h3>Scroll me dude 👇</h3>
-    <h1 style="margin-top: 2000px">Yoong Hi 👋</h1>
+    <h2>Foo</h2>
+    <h4>Scroll me dude 👇</h4>
+    <h2 style="margin-top: 2000px">Yo Hah 👋</h2>
+    <pre>{{ platform }}</pre>
   </div>
 </template>
+
+<script>
+import platform from 'platform';
+
+export default {
+  data: () => ({
+    platform,
+  }),
+}
+</script>

@@ -1,9 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import NProgress from 'nprogress';
 
 Vue.use(Router);
 
-export default new Router({
+NProgress.configure({
+  showSpinner: false,
+});
+
+const router = new Router({
   mode: 'history',
   routes: [
     { path: '/', component: () => import('./pages/Foo') },
@@ -11,3 +16,14 @@ export default new Router({
     { path: '/baz', component: () => import('./pages/Baz') },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  NProgress.start();
+  next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
+});
+
+export default router;

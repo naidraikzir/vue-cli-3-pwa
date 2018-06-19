@@ -16,7 +16,7 @@
 import {
   HomeIcon,
   PlusSquareIcon,
-  InboxIcon,
+  CameraIcon,
 } from 'vue-feather-icons';
 
 export default {
@@ -24,7 +24,7 @@ export default {
     menus: [
       { path: '/', text: 'foo', icon: HomeIcon },
       { path: '/bar', text: 'bar', icon: PlusSquareIcon },
-      { path: '/baz', text: 'baz', icon: InboxIcon },
+      { path: '/baz', text: 'baz', icon: CameraIcon },
     ],
   }),
 };

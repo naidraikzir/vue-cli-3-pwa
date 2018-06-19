@@ -4,7 +4,7 @@
       v-for="(menu, i) of menus"
       :key="i"
       :to="{ path: menu.path }"
-      :alt="menu.text"
+      :aria-label="menu.text"
       exact
     >
       <component :is="menu.icon"></component>

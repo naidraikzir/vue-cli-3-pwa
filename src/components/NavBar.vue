@@ -15,7 +15,7 @@
 <script>
 import {
   HomeIcon,
-  PlusSquareIcon,
+  MapPinIcon,
   CameraIcon,
 } from 'vue-feather-icons';
 
@@ -23,7 +23,7 @@ export default {
   data: () => ({
     menus: [
       { path: '/', text: 'foo', icon: HomeIcon },
-      { path: '/bar', text: 'bar', icon: PlusSquareIcon },
+      { path: '/bar', text: 'bar', icon: MapPinIcon },
       { path: '/baz', text: 'baz', icon: CameraIcon },
     ],
   }),

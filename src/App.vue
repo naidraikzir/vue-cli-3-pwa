@@ -1,10 +1,7 @@
 <template>
   <div id="app">
     <div class="view">
-      <div
-        class="connection-status"
-        v-show="$root.isOffline"
-      >No Internet Connection</div>
+      <conn-status></conn-status>
       <router-view></router-view>
     </div>
     <nav-bar></nav-bar>
@@ -12,11 +9,13 @@
 </template>
 
 <script>
+import ConnStatus from './components/ConnStatus';
 import NavBar from './components/NavBar';
 
 export default {
   name: 'app',
   components: {
+    ConnStatus,
     NavBar,
   },
 };
@@ -71,13 +70,6 @@ pre {
   transform: translateX(-50%);
 }
 
-.connection-status {
-  background: #f3f3f3;
-  color: #f00;
-  padding: 0.5em;
-  text-align: center;
-}
-
 .view {
   bottom: 50px;
   overflow-x: hidden;
@@ -85,5 +77,9 @@ pre {
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.p1 {
+  padding: 1em;
 }
 </style>

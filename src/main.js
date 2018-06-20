@@ -8,6 +8,15 @@ Vue.config.productionTip = false
 new Vue({
   data: {
     isOffline: false,
+    coords: {
+      accuracy: null,
+      altitude: null,
+      altitudeAccuracy: null,
+      heading: null,
+      latitude: null,
+      longitude: null,
+      speed: null,
+    },
   },
   created() {
     window.addEventListener('offline', () => {

@@ -1,31 +1,19 @@
 <template>
   <div class="p1">
     <h2>Geolocation</h2>
-    <pre>{{ coords }}</pre>
+    <pre>{{ $root.coords }}</pre>
   </div>
 </template>
 
 <script>
 export default {
-  data: () => ({
-    coords: {
-      accuracy: null,
-      altitude: null,
-      altitudeAccuracy: null,
-      heading: null,
-      latitude: null,
-      longitude: null,
-      speed: null,
-    },
-  }),
-
   mounted() {
     if (this.featureDetect()) {
       try {
         navigator.geolocation.watchPosition((location) => {
-          Object.keys(this.coords)
+          Object.keys(this.$root.coords)
             .map((key) => {
-              this.coords[key] = location.coords[key];
+              this.$root.coords[key] = location.coords[key];
             });
         }, (error) => {
           console.error(error)

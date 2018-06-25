@@ -51,5 +51,14 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "vue": {
+    "pwa": {
+      "name": "yo pwa 🖖",
+      "themeColor": "#000000",
+      "msTileColor": "#000000",
+      "appleMobileWebAppCapable": "yes",
+      "appleMobileWebAppStatusBarStyle": "black"
+    }
+  }
 }

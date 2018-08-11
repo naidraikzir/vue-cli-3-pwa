@@ -16,19 +16,15 @@ export default {
     front: true,
   }),
 
-  async mounted() {
+  watch: {
+    front() {
+      this.setSrc();
+    },
+  },
+
+  mounted() {
     if (this.featureDetect()) {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: true,
-          video: {
-            facingMode: this.front ? 'user' : 'environment',
-          },
-        });
-        this.$refs.liveview.srcObject = stream;
-      } catch (error) {
-        console.error(error);
-      }
+      this.setSrc();
     } else {
       alert('Not supported !');
     }
@@ -43,6 +39,19 @@ export default {
   },
 
   methods: {
+    async setSrc() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: true,
+          video: {
+            facingMode: this.front ? 'user' : 'environment',
+          },
+        });
+        this.$refs.liveview.srcObject = stream;
+      } catch (error) {
+        console.error(error);
+      }
+    },
     featureDetect: () => !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia),
   },
 };

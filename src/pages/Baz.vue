@@ -1,32 +1,28 @@
 <template>
   <div>
-    <video autoplay ref="liveview"></video>
-    <div class="p1" v-show="medias.length">
-      <h3>Available Medias</h3>
-      <div class="media" v-for="(media, m) of medias" :key="m">
-        <div><strong>Device ID</strong> : {{ media.deviceId }}</div>
-        <div><strong>Group ID</strong> : {{ media.groupId }}</div>
-        <div><strong>Label</strong> : {{ media.label }}</div>
-      </div>
-    </div>
+    <video
+      autoplay
+      ref="liveview"
+      :class="{ 'front': front }"
+    ></video>
+    <br>
+    <button @click="front = !front">Switch</button>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    medias: [],
+    front: true,
   }),
 
   async mounted() {
     if (this.featureDetect()) {
       try {
-        const medias = await navigator.mediaDevices.enumerateDevices();
-        this.medias = medias.filter(media => media.kind === 'videoinput');
-
         const stream = await navigator.mediaDevices.getUserMedia({
+          audio: true,
           video: {
-            facingMode: 'user',
+            facingMode: this.front ? 'user' : 'environment',
           },
         });
         this.$refs.liveview.srcObject = stream;
@@ -53,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-video {
+video.front {
   transform: rotateY(180deg);
 }
 
